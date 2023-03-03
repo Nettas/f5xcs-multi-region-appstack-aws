@@ -1,5 +1,5 @@
 variable "environment" {
-	default		= "sse-xc-aws"
+	default		= "sse-on-xc-in-aws"
 	description = "Environment Name"
 }
 
@@ -21,6 +21,6 @@ variable "aws_region" {
 
 variable "aws_vpc_cidr" {
 	type 		= string
-	default 	= "10.20.0.0/16"
+	default 	= "10.0.0.0/16"
 	description = "CIDR block of the vpc"
 }
