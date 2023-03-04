@@ -151,7 +151,7 @@ variable "sitetoken" {
   sensitive   = true
 }
 
-# variable "url" {}
-# variable "api_p12_file" {}
-# variable "api_cert" {}
-# variable "api_key" {}
+variable "url" {}
+variable "api_p12_file" {}
+variable "api_cert" {}
+variable "api_key" {}

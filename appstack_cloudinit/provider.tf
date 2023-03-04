@@ -10,9 +10,9 @@ provider "aws" {
 #     #   # version = "0.11.6"
 #     # }
 # }
-# provider "volterra" {
-#   api_p12_file = var.api_p12_file
-#   api_cert     = var.api_p12_file != "" ? "" : var.api_cert
-#   api_key      = var.api_p12_file != "" ? "" : var.api_key
-#   url          = var.url
-# }
+provider "volterra" {
+  api_p12_file = var.api_p12_file
+  api_cert     = var.api_p12_file != "" ? "" : var.api_cert
+  api_key      = var.api_p12_file != "" ? "" : var.api_key
+  url          = var.url
+}

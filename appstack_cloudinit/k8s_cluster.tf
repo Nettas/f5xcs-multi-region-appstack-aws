@@ -1,6 +1,6 @@
 # ### k8s cluster ###
 resource "volterra_k8s_cluster" "aws_sse" {
-  name      = var.project_prefix
+  name      = var.clustername
   namespace = "system"
 
   // One of the arguments from this list "no_cluster_wide_apps cluster_wide_app_list" must be set
