@@ -5,7 +5,7 @@ terraform {
       source  = "hashicorp/aws"
       version = ">= 4.0"
     }
-    volterra  = {
+    volterra = {
       source  = "volterraedge/volterra"
       version = "0.11.19"
     }

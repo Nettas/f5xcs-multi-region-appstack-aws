@@ -20,9 +20,9 @@ resource "volterra_k8s_cluster" "aws_sse" {
 
   // One of the arguments from this list "no_insecure_registries insecure_registry_list" must be set
 
-#   insecure_registry_list {
-#     insecure_registries = ["example.com:5000"]
-#   }
+  #   insecure_registry_list {
+  #     insecure_registries = ["example.com:5000"]
+  #   }
   // One of the arguments from this list "no_local_access local_access_config" must be set
   local_access_config {
     local_domain = var.clustername

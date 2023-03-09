@@ -33,20 +33,20 @@ variable "instance" {
   type        = string
 }
 
-variable "az" {
+variable "az1" {
   description = "REQUIRED: AWS AZ"
-  type        = list
+  type        = string
 }
 
-# variable "az2" {
-#   description = "REQUIRED: AWS AZ"
-#   type        = string
-# }
+variable "az2" {
+  description = "REQUIRED: AWS AZ"
+  type        = string
+}
 
-# variable "az3" {
-#   description = "REQUIRED: AWS AZ"
-#   type        = string
-# }
+variable "az3" {
+  description = "REQUIRED: AWS AZ"
+  type        = string
+}
 
 variable "url" {}
 variable "api_p12_file" {}
@@ -54,3 +54,8 @@ variable "api_cert" {}
 variable "api_key" {}
 variable "clustername" {}
 variable "tenant_name" {}
+variable "aws_region" {}
+variable "subnet1" {}
+variable "subnet2" {}
+variable "subnet3" {}
+variable "projectprefix" {}
