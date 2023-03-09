@@ -33,6 +33,9 @@ resource "volterra_aws_vpc_site" "example" {
   // One of the arguments from this list "logs_streaming_disabled log_receiver" must be set
   logs_streaming_disabled = true
 
+  offline_survivability_mode {
+    enable_offline_survivability_mode = true
+  }
   // One of the arguments from this list "ingress_gw ingress_egress_gw voltstack_cluster" must be set
 
   voltstack_cluster {
@@ -42,10 +45,11 @@ resource "volterra_aws_vpc_site" "example" {
     }
 
     aws_certified_hw = "aws-byol-voltstack-combo"
-
+    
     az_nodes {
       aws_az_name = var.az1
       disk_size = "80"
+
     local_subnet{
       subnet_param {
         # ipv4 = "10.0.0.0/24"
@@ -66,6 +70,7 @@ resource "volterra_aws_vpc_site" "example" {
     az_nodes {
       aws_az_name = var.az3
       disk_size = "80"
+      
     local_subnet{
       subnet_param {
         # ipv4 = "10.0.2.0/24"
