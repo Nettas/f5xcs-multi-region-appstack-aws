@@ -59,3 +59,6 @@ variable "subnet1" {}
 variable "subnet2" {}
 variable "subnet3" {}
 variable "projectprefix" {}
+variable "xcs_tf_action" {
+  default = "plan"
+}

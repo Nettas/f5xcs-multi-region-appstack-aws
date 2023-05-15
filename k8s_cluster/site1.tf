@@ -3,17 +3,17 @@
 
 resource "volterra_aws_vpc_site" "example" {
   # count      = length(data.aws_availability_zones.available.names)
-  name       = var.name
+  name = var.name
   # name        = format("%s-ssexcaws-1", var.projectprefix)
   namespace  = "system"
   aws_region = var.region
 
   vpc {
     new_vpc {
-          autogenerate = true
-          primary_ipv4 = "10.0.0.0/21"
+      autogenerate = true
+      primary_ipv4 = "10.0.0.0/21"
     }
-}
+  }
 
   // One of the arguments from this list "default_blocked_services blocked_services" must be set
   default_blocked_services = true
@@ -45,39 +45,37 @@ resource "volterra_aws_vpc_site" "example" {
     }
 
     aws_certified_hw = "aws-byol-voltstack-combo"
-    
+
     az_nodes {
       aws_az_name = var.az1
-      disk_size = "80"
-
-    local_subnet{
-      subnet_param {
-        # ipv4 = "10.0.0.0/24"
-        ipv4 = var.subnet1
+      disk_size   = "80"
+      local_subnet {
+        subnet_param {
+          # ipv4 = "10.0.0.0/24"
+          ipv4 = var.subnet1
+        }
       }
     }
-  }
     az_nodes {
       aws_az_name = var.az2
-      disk_size = "80"
-    local_subnet{
-      subnet_param {
-        # ipv4 = "10.0.1.0/24"
-        ipv4 = var.subnet2
+      disk_size   = "80"
+      local_subnet {
+        subnet_param {
+          # ipv4 = "10.0.1.0/24"
+          ipv4 = var.subnet2
+        }
       }
     }
-  }
     az_nodes {
       aws_az_name = var.az3
-      disk_size = "80"
-      
-    local_subnet{
-      subnet_param {
-        # ipv4 = "10.0.2.0/24"
-        ipv4 = var.subnet3
+      disk_size   = "80"
+      local_subnet {
+        subnet_param {
+          # ipv4 = "10.0.2.0/24"
+          ipv4 = var.subnet3
+        }
       }
     }
-  }    
 
     k8s_cluster {
       namespace = "system"
@@ -89,5 +87,23 @@ resource "volterra_aws_vpc_site" "example" {
     # }
   }
   // One of the arguments from this list "no_worker_nodes nodes_per_az total_nodes" must be set
-  nodes_per_az = "1"
+  # nodes_per_az = "1"
+  no_worker_nodes = true
+}
+
+
+
+# resource "volterra_tf_params_action" "action1" {
+#   site_name       = volterra_aws_vpc_site.example.name
+#   site_kind       = "aws_vpc_site"
+#   action          = var.xcs_tf_action
+#   wait_for_action = true
+# }
+
+resource "volterra_tf_params_action" "aws-vpc-site-terraform-params-action" {
+  site_name = var.name
+  site_kind = "aws_vpc_site"
+  action = "apply"
+  depends_on = [ volterra_aws_vpc_site.example ]
+  wait_for_action = true
 }
